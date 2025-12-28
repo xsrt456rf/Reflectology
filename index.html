@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Система тестирования скрытых нарушений</title>
+
+  <style>
+    :root {
+      --main: #5b21b6;
+      --accent: #c084fc;
+      --danger: #dc2626;
+      --bg: #f4f5fb;
+      --card: #ffffff;
+      --shadow: rgba(0,0,0,0.15);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+      background: var(--bg);
+      color: #1f2937;
+    }
+
+    .container {
+      max-width: 950px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    header {
+      background: linear-gradient(135deg, #5b21b6, #7c3aed);
+      color: white;
+      padding: 40px 20px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px var(--shadow);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.3rem;
+    }
+
+    .warning {
+      background: var(--danger);
+      color: white;
+      padding: 16px;
+      border-radius: 14px;
+      font-weight: bold;
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 18px;
+      padding: 25px;
+      margin-bottom: 25px;
+      box-shadow: 0 8px 25px var(--shadow);
+      transition: transform 0.2s;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+    }
+
+    h2 {
+      margin-top: 0;
+      color: var(--main);
+      font-size: 1.6rem;
+      border-bottom: 3px solid var(--accent);
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .q {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 15px;
+      background: #f1f3ff;
+      border-radius: 12px;
+      margin: 10px 0;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .q:hover { background: #e0e7ff; }
+
+    input[type=checkbox] {
+      transform: scale(1.3);
+      accent-color: var(--main);
+    }
+
+    .card-button {
+      display: block;
+      margin: 20px auto 0;
+      padding: 14px 40px;
+      font-size: 1.1rem;
+      background: var(--main);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(91, 33, 182, 0.25);
+      transition: 0.25s;
+      width: fit-content;
+    }
+
+    .card-button:hover {
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    .section-result {
+      display: none;
+      margin-top: 20px;
+      padding: 20px;
+      background: #f8f7ff;
+      border-radius: 14px;
+      border-left: 6px solid var(--accent);
+      font-size: 1.05rem;
+    }
+
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      background: #1e1b4b;
+      color: #e9d5ff;
+      padding: 30px;
+      border-radius: 16px;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+
+  <header>
+    <h1>Система тестирования скрытых нарушений</h1>
+    <p>Самопроверка состояния организма</p>
+  </header>
+
+  <div class="warning">
+    Внимание: этот тест не является медицинской диагностикой.
+  </div>
+
+  <!-- 1. ЧУВСТВИТЕЛЬНОСТЬ К ИНСУЛИНУ -->
+  <div class="card">
+    <h2>1. Чувствительность к инсулину</h2>
+
+    <label class="q"><input type="checkbox" name="insulin"> У вас есть постоянное чувство голода даже после еды?</label>
+    <label class="q"><input type="checkbox" name="insulin"> Вы чувствуете сонливость или усталость после приема пищи?</label>
+    <label class="q"><input type="checkbox" name="insulin"> У вас есть жировые отложения в области живота?</label>
+    <label class="q"><input type="checkbox" name="insulin"> Вы испытываете тягу к сладкому или углеводам?</label>
+    <label class="q"><input type="checkbox" name="insulin"> У вас есть учащенное мочеиспускание?</label>
+    <label class="q"><input type="checkbox" name="insulin"> Вы заметили потемнение кожи в области шеи или подмышек?</label>
+    
+    <button class="card-button" onclick="calculateSection('insulin', 'Чувствительность к инсулину', 6, 'result-insulin')">
+      Показать результат раздела
+    </button>
+    
+    <div id="result-insulin" class="section-result"></div>
+  </div>
+
+  <!-- 2. ВИТАМИН D3 -->
+  <div class="card">
+    <h2>2. Дефицит витамина D3</h2>
+
+    <label class="q"><input type="checkbox" name="vitd"> Постоянная усталость и слабость</label>
+    <label class="q"><input type="checkbox" name="vitd"> Частые простуды и инфекции</label>
+    <label class="q"><input type="checkbox" name="vitd"> Боли в мышцах и костях</label>
+    <label class="q"><input type="checkbox" name="vitd"> Депрессия или плохое настроение</label>
+    <label class="q"><input type="checkbox" name="vitd"> Повышенная потливость, особенно головы</label>
+    <label class="q"><input type="checkbox" name="vitd"> Сухость кожи и волос</label>
+    <label class="q"><input type="checkbox" name="vitd"> Нарушения сна</label>
+    
+    <button class="card-button" onclick="calculateSection('vitd', 'Дефицит витамина D3', 7, 'result-vitd')">
+      Показать результат раздела
+    </button>
+    
+    <div id="result-vitd" class="section-result"></div>
+  </div>
+
+  <!-- 3. ОРВИ -->
+  <div class="card">
+    <h2>3. Состояние при ОРВИ</h2>
+
+    <label class="q"><input type="checkbox" name="orvi"> У вас есть повышенная температура тела?</label>
+    <label class="q"><input type="checkbox" name="orvi"> Вы чувствуете озноб или знобит?</label>
+    <label class="q"><input type="checkbox" name="orvi"> У вас есть насморк или заложенность носа?</label>
+    <label class="q"><input type="checkbox" name="orvi"> Вы кашляете (сухой или влажный кашель)?</label>
+    <label class="q"><input type="checkbox" name="orvi"> У вас болит горло или есть дискомфорт при глотании?</label>
+    <label class="q"><input type="checkbox" name="orvi"> Вы чувствуете головную боль?</label>
+    <label class="q"><input type="checkbox" name="orvi"> У вас есть ломота в теле или мышцах?</label>
+    <label class="q"><input type="checkbox" name="orvi"> Вы чувствуете общую слабость и недомогание?</label>
+    
+    <button class="card-button" onclick="calculateSection('orvi', 'Состояние при ОРВИ', 8, 'result-orvi')">
+      Показать результат раздела
+    </button>
+    
+    <div id="result-orvi" class="section-result"></div>
+  </div>
+
+  <footer>
+    Тест создан для информационных целей
+  </footer>
+
+</div>
+
+<script>
+// Функция для расчета результатов отдельного раздела
+function calculateSection(inputName, title, maxQuestions, resultElementId) {
+  const checked = document.querySelectorAll(`input[name="${inputName}"]:checked`).length;
+  const resultDiv = document.getElementById(resultElementId);
+  
+  let level = '';
+  
+  // Логика оценки для чувствительности к инсулину (6 вопросов)
+  if (maxQuestions === 6) {
+    if (checked === 0) {
+      level = 'Симптомы не выражены';
+    } else if (checked <= 2) {
+      level = 'Лёгкие признаки';
+    } else if (checked <= 4) {
+      level = 'Умеренные признаки';
+    } else if (checked <= 5) {
+      level = 'Выраженные признаки';
+    } else {
+      level = 'Высокая вероятность нарушений';
+    }
+  }
+  // Логика оценки для витамина D3 (7 вопросов)
+  else if (maxQuestions === 7) {
+    if (checked === 0) {
+      level = 'Симптомы не выражены';
+    } else if (checked <= 2) {
+      level = 'Лёгкие признаки';
+    } else if (checked <= 4) {
+      level = 'Умеренные признаки';
+    } else if (checked <= 6) {
+      level = 'Выраженные признаки';
+    } else {
+      level = 'Высокая вероятность нарушений';
+    }
+  }
+  // Логика оценки для ОРВИ (8 вопросов)
+  else if (maxQuestions === 8) {
+    if (checked === 0) {
+      level = 'Симптомы не выражены';
+    } else if (checked <= 2) {
+      level = 'Лёгкие признаки';
+    } else if (checked <= 5) {
+      level = 'Умеренные признаки';
+    } else if (checked <= 7) {
+      level = 'Выраженные признаки';
+    } else {
+      level = 'Высокая вероятность нарушений';
+    }
+  }
+  
+  let html = `<h3 style="color:var(--main); margin-top:0;">${title}</h3>`;
+  html += `<p><b>Ответов "да":</b> ${checked} из ${maxQuestions}</p>`;
+  html += `<p><b>Оценка:</b> ${level}</p>`;
+  
+  resultDiv.innerHTML = html;
+  resultDiv.style.display = 'block';
+  
+  // Прокручиваем к результатам раздела
+  resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+</script>
+
+</body>
+</html>
