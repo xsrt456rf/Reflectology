@@ -77,11 +77,53 @@ header p {
   margin-top: 6px;
 }
 
+.placeholder {
+  margin-top: 16px;
+  padding: 18px;
+  background: #f1f5f9;
+  border-radius: 14px;
+  border: 2px dashed #cbd5e1;
+  color: #64748b;
+  font-style: italic;
+  text-align: center;
+}
+
+/* Изображения точек: теперь 500x500 и кликабельны */
 .point img {
   margin-top: 16px;
   width: 100%;
+  height: auto;
+  max-width: 500px;
+  max-height: 500px;
   border-radius: 14px;
   display: block;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.point img:hover {
+  transform: scale(1.02);
+}
+
+/* Lightbox стили */
+#lightbox {
+  position: fixed;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+#lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
 }
 
 footer {
