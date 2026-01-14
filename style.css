@@ -8,7 +8,9 @@
   --shadow: rgba(0,0,0,0.12);
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
@@ -17,6 +19,7 @@ body {
   color: var(--text);
 }
 
+/* Layout */
 .container {
   max-width: 1100px;
   margin: 30px auto;
@@ -44,6 +47,7 @@ header p {
   margin-top: 10px;
 }
 
+/* Grid */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -51,12 +55,13 @@ header p {
   margin-top: 30px;
 }
 
+/* Card */
 .point {
   background: var(--card);
   border-radius: 20px;
   padding: 22px;
   box-shadow: 0 10px 30px var(--shadow);
-  transition: transform 0.25s, box-shadow 0.25s;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .point:hover {
@@ -65,67 +70,25 @@ header p {
 }
 
 .code {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: var(--main);
   letter-spacing: 1px;
+  margin-bottom: 12px;
 }
 
-.line {
-  font-size: 0.95rem;
-  color: var(--muted);
-  margin-top: 6px;
-}
-
-.placeholder {
-  margin-top: 16px;
-  padding: 18px;
-  background: #f1f5f9;
-  border-radius: 14px;
-  border: 2px dashed #cbd5e1;
-  color: #64748b;
-  font-style: italic;
-  text-align: center;
-}
-
-/* Изображения точек: теперь 500x500 и кликабельны */
+/* Images in cards */
 .point img {
-  margin-top: 16px;
   width: 100%;
-  height: auto;
-  max-width: 500px;
-  max-height: 500px;
+  max-height: 260px;
+  object-fit: contain;
   border-radius: 14px;
-  display: block;
-  cursor: pointer;
-  transition: transform 0.2s;
+  cursor: zoom-in;
+  background: #f1f5f9;
+  padding: 10px;
 }
 
-.point img:hover {
-  transform: scale(1.02);
-}
-
-/* Lightbox стили */
-#lightbox {
-  position: fixed;
-  display: none;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0,0,0,0.85);
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-#lightbox img {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 12px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-}
-
+/* Footer */
 footer {
   margin-top: 50px;
   padding: 35px;
@@ -134,4 +97,40 @@ footer {
   color: #c7d2fe;
   border-radius: 20px;
   font-size: 0.95rem;
+}
+
+/* =========================
+   LIGHTBOX (FULLSCREEN)
+   ========================= */
+
+#lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+#lightbox img {
+  max-width: 95vw;
+  max-height: 95vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 16px;
+  box-shadow: 0 0 40px rgba(0,0,0,0.6);
+  cursor: zoom-out;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .point img {
+    max-height: 220px;
+  }
 }
