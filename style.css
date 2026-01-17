@@ -113,15 +113,15 @@ footer {
   z-index: 9999;
 }
 
+/* 🔥 ВАЖНО: ОДИНАКОВЫЙ БОЛЬШОЙ РАЗМЕР ДЛЯ ВСЕХ */
 #lightbox img {
-  max-width: 95vw;
-  max-height: 95vh;
-  width: auto;
-  height: auto;
+  width: 90vw;
+  height: 90vh;
   object-fit: contain;
   border-radius: 16px;
   box-shadow: 0 0 40px rgba(0,0,0,0.6);
   cursor: zoom-out;
+  background: black;
 }
 
 /* Mobile */
